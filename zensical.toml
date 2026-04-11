@@ -98,6 +98,8 @@ link = "https://github.com/marc2k3"
 
 [project.markdown_extensions.admonition]
 
+[project.markdown_extensions.pymdownx.details]
+
 [project.markdown_extensions.pymdownx.highlight]
 
 [project.markdown_extensions.pymdownx.keys]

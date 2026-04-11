@@ -182,7 +182,7 @@ viewable on the `Details` tab in the main `Properties` dialog. This
 can be technical/location info as well as database fields
 from 3rd party components if present.
 
-!!! example
+??? example
 	```js
 	var handle_list = plman.GetPlaylistItems(plman.ActivePlaylist);
 	var str = handle_list.GetOtherInfo();
@@ -191,23 +191,80 @@ from 3rd party components if present.
 
 	``` markdown title="Example output"
 	{
-		"General": {
-			"Avg. bitrate": "259 kbps",
-			"Channels": "2",
-			"Codec": "MP3 (82.5%); AAC (17.5%)",
-			"Codec profile": "MP3 VBR V0 (39.1%); MP3 CBR (24.3%); AAC LC (17.5%); MP3 VBR V2 (11.7%); MP3 VBR (3.9%); MP3 ABR (3.5%)",
-			"Duration": "5:24:44.445 (859 264 046 samples)",
-			"Encoding": "lossy",
-			"Sample rate": "44100 Hz",
-			"Tag type": "id3v2.4 (82.5%)",
-			"Tool": "LAME3.97 (27.6%); LAME3.99r (13.7%); LAME3.90 (7.4%); LAME3.98r (5.5%); LAME3.99 (5.4%); Lavf (4.7%); LAME3.97b (3.8%); LAME3.98b (3.5%); LAME3.96r (1.2%); LAME3.100 (1.1%)"
-		},
-		"Location": {
-			"File names": "Bat For Lashes - Clouds.mp3, Bat For Lashes - Daphne.m4a, Bat For Lashes - Lumen.m4a, Bat For Lashes - Plan The Escape.mp3 ...",
-			"Folder name": "E:\\Music\\Tracks",
-			"Last modified": "2021-12-01 00:00:00",
-			"Total size": "601 MB (631 125 587 bytes)"
-		}
+		"General": [
+			{
+				"Name": "Duration",
+				"Priority": 0.0,
+				"Value": "41:42.240 (110 348 784 samples)"
+			},
+			{
+				"Name": "Avg. bitrate",
+				"Priority": 5.0,
+				"Value": "256 kbps"
+			},
+			{
+				"Name": "Codec",
+				"Priority": 6.0,
+				"Value": "MP3"
+			},
+			{
+				"Name": "Codec profile",
+				"Priority": 7.0,
+				"Value": "MP3 VBR V0"
+			},
+			{
+				"Name": "Tool",
+				"Priority": 9.0,
+				"Value": "LAME3.100"
+			},
+			{
+				"Name": "Encoding",
+				"Priority": 9.0,
+				"Value": "lossy"
+			},
+			{
+				"Name": "Sample rate",
+				"Priority": 1.0,
+				"Value": "44100 Hz"
+			},
+			{
+				"Name": "Channels",
+				"Priority": 3.0,
+				"Value": "2"
+			},
+			{
+				"Name": "Tag type",
+				"Priority": 12.0,
+				"Value": "id3v2.4"
+			},
+			{
+				"Name": "Embedded cuesheet",
+				"Priority": 13.0,
+				"Value": "no"
+			}
+		],
+		"Location": [
+			{
+				"Name": "File names",
+				"Priority": 0.0,
+				"Value": "01. The Lost Ones.mp3, 02. Never Far From Paradise.mp3, 03. Kissing In The Cold.mp3, 04. Personal.mp3 ..."
+			},
+			{
+				"Name": "Folder name",
+				"Priority": 1.0,
+				"Value": "E:\\Music\\Albums\\MP3\\Florrie\\The Lost Ones"
+			},
+			{
+				"Name": "Total size",
+				"Priority": 5.0,
+				"Value": "76.3 MB (80 029 856 bytes)"
+			},
+			{
+				"Name": "Last modified",
+				"Priority": 6.0,
+				"Value": "2026-04-01 00:00:00"
+			}
+		]
 	}
 	```
 
