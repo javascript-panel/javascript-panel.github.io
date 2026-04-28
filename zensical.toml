@@ -111,3 +111,5 @@ alternate_style = true
 
 [project.markdown_extensions.toc]
 permalink = "#"
+
+[project.markdown_extensions.zensical.extensions.glightbox]
