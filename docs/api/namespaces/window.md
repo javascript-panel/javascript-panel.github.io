@@ -12,7 +12,7 @@
 |window.MaxWidth|`number`|read, write|
 |window.MinHeight|`number`|read, write|
 |window.MinWidth|`number`|read, write|
-|[window.Name]|`string`|read|Script name that was suuplied to `window.DefineScript`.
+|window.Name|`string`|read|Script name that was suuplied to `window.DefineScript`.
 |window.Width|`number`|read|
 
 **Methods**
