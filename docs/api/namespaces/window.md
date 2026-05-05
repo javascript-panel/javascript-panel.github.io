@@ -84,7 +84,7 @@ Returns a `number` which can used as the `colour` in many methods.
 |---|---|---|
 |type|[FontType](../flags.md#fonttype)|
 
-See above for the return value.
+Returns a `string`. See [fonts](../../guides/fonts.md).
 
 ## `window.GetProperty(name[, default_value])`
 |Arguments|||
