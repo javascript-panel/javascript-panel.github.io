@@ -115,21 +115,19 @@ Disabled // boolean
 FullPath // string, the same full path you'd supply to fb.RunMainMenuCommand
 HiddenByDefault // boolean
 Radio // boolean
-Type // string "Fixed" or "Dynamic"
+Fixed // boolean, some menu items such as playlist names or output devices are dynamic as opposed to fixed
 Visible // boolean
 ```
 
 !!! example
 
 	```js
-	var menu_commands = JSON.parse(fb.EnumerateMainMenuCommands());
+	let menu_commands = JSON.parse(fb.EnumerateMainMenuCommands());
 
 	// list all checked commands in the Console
-	menu_commands.filter(function (command) {
-		return command.Checked;
-	}).forEach(function (command) {
-		console.log(command.FullPath);
-	});
+	menu_commands
+		.filter(command => command.Checked)
+		.forEach(command => console.log(command.FullPath));
 	```
 
 ## `fb.Exit()`
