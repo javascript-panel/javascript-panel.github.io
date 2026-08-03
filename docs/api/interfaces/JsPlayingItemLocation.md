@@ -6,8 +6,8 @@ IsValid|`boolean`|read|
 PlaylistIndex|`number`|read|
 PlaylistItemIndex|`number`|read|
 
-`IsValid` will always be `false` if [foobar2000](https://www.foobar2000.org) isn't playing. It can
-also be `false` if the playing track has since been removed from the playlist it was on when playback was started.
+`IsValid` will be `false` if [foobar2000](https://www.foobar2000.org) isn't playing
+or the playing track does does not belong to belong to a playlist.
 
 !!! example
 	```js
