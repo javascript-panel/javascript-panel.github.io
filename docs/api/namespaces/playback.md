@@ -96,33 +96,57 @@ Returns a `JSON` array in string form so you need to use `JSON.parse` on the res
 	[
 		{
 			"Active": false,
-			"DeviceID": "{5243F9AD-C84F-4723-8194-0788FC021BCC}",
+			"DeviceID": "5243F9AD-C84F-4723-8194-0788FC021BCC",
 			"Name": "Null Output",
-			"OutputID": "{EEEB07DE-C2C8-44C2-985C-C85856D96DA1}"
+			"OutputID": "EEEB07DE-C2C8-44C2-985C-C85856D96DA1"
 		},
 		{
 			"Active": true,
-			"DeviceID": "{00000000-0000-0000-0000-000000000000}",
+			"DeviceID": "00000000-0000-0000-0000-000000000000",
 			"Name": "Primary Sound Driver",
-			"OutputID": "{D41D2423-FBB0-4635-B233-7054F79814AB}"
+			"OutputID": "D41D2423-FBB0-4635-B233-7054F79814AB"
 		},
 		{
 			"Active": false,
-			"DeviceID": "{1C4EC038-97DB-48E7-9C9A-05FDED46847B}",
-			"Name": "Speakers (Sound Blaster Z)",
-			"OutputID": "{D41D2423-FBB0-4635-B233-7054F79814AB}"
-		},
-		{
-			"Active": false,
-			"DeviceID": "{41B86272-3D6C-4A5A-8907-4FE7EBE39E7E}",
+			"DeviceID": "5F6D1D66-4815-4E05-B779-CE7FD5745FBB",
 			"Name": "SPDIF-Out (Sound Blaster Z)",
-			"OutputID": "{D41D2423-FBB0-4635-B233-7054F79814AB}"
+			"OutputID": "D41D2423-FBB0-4635-B233-7054F79814AB"
 		},
 		{
 			"Active": false,
-			"DeviceID": "{9CDC0FAE-2870-4AFA-8287-E86099D69076}",
-			"Name": "3 - BenQ BL3200 (AMD High Definition Audio Device)",
-			"OutputID": "{D41D2423-FBB0-4635-B233-7054F79814AB}"
+			"DeviceID": "82CDE792-1C9B-4243-BC8B-D07DA9E37068",
+			"Name": "Speakers (Sound Blaster Z)",
+			"OutputID": "D41D2423-FBB0-4635-B233-7054F79814AB"
+		},
+		{
+			"Active": false,
+			"DeviceID": "B6FC1E61-C2E2-4C45-BCA8-4F9B15D148D3",
+			"Name": "4 - LG FHD (AMD High Definition Audio Device)",
+			"OutputID": "D41D2423-FBB0-4635-B233-7054F79814AB"
+		},
+		{
+			"Active": false,
+			"DeviceID": "00000000-0000-0000-0000-000000000000",
+			"Name": "Primary Sound Driver [exclusive]",
+			"OutputID": "0DD9B977-765B-4804-BF2D-B28EBF0C510D"
+		},
+		{
+			"Active": false,
+			"DeviceID": "5F6D1D66-4815-4E05-B779-CE7FD5745FBB",
+			"Name": "SPDIF-Out (Sound Blaster Z) [exclusive]",
+			"OutputID": "0DD9B977-765B-4804-BF2D-B28EBF0C510D"
+		},
+		{
+			"Active": false,
+			"DeviceID": "82CDE792-1C9B-4243-BC8B-D07DA9E37068",
+			"Name": "Speakers (Sound Blaster Z) [exclusive]",
+			"OutputID": "0DD9B977-765B-4804-BF2D-B28EBF0C510D"
+		},
+		{
+			"Active": false,
+			"DeviceID": "B6FC1E61-C2E2-4C45-BCA8-4F9B15D148D3",
+			"Name": "4 - LG FHD (AMD High Definition Audio Device) [exclusive]",
+			"OutputID": "0DD9B977-765B-4804-BF2D-B28EBF0C510D"
 		}
 	]
 	```
@@ -145,16 +169,16 @@ device name or use [playback.SetOutputDevice](#playbacksetoutputdeviceoutputid-d
 		```js
 		var str = playback.GetOutputDevices();
 		var arr = JSON.parse(str);
-		// Assuming same list from above, switch output to the last device.
-		fb.RunMainMenuCommand("Playback/Device/" + arr[4].Name);
+		// Assuming same list from above, switch output to "Primary Sound Driver [exclusive]".
+		fb.RunMainMenuCommand("Playback/Device/" + arr[5].Name);
 		```
 
 	=== "SetOutputDevice"
 		```js
 		var str = playback.GetOutputDevices();
 		var arr = JSON.parse(str);
-		// Assuming same list from above, switch output to the last device.
-		playback.SetOutputDevice(arr[4].OutputID, arr[4].DeviceID);
+		// Assuming same list from above, switch output to "Primary Sound Driver [exclusive]".
+		playback.SetOutputDevice(arr[5].OutputID, arr[5].DeviceID);
 		```
 
 ## `playback.Next()`
