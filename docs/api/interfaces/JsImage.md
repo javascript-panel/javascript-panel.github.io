@@ -43,12 +43,9 @@ See also: [utils.LoadBitmap](../namespaces/utils.md#utilsloadbitmappath-max_size
 
 No return value.
 
-## `GetColourScheme(count)`
-|Arguments|||
-|---|---|---|
-|count|`number`|
-
-Returns a stringified `JSON` array. You'll need to use `JSON.parse` before using. Each
+## `GetColourScheme()`
+Extracts up to 10 colours from the source image and they are returned as
+a stringified `JSON` array. You'll need to use `JSON.parse` before using. Each
 array item will contain `Colour` and `Luminance` values.
 
 !!! example
