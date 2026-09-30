@@ -48,12 +48,8 @@ No return value.
 |---|---|---|
 |count|`number`|
 
-Returns an array.
-
-!!! note
-	This uses the `KMeans` algorithm internally so should produce similar results to
-	`GetColourSchemeJSON` from other components except it returns the colours only
-	without the frequency.
+Returns a stringified `JSON` array. You'll need to use `JSON.parse` before using. Each
+array item will contain `Colour` and `Luminance` values.
 
 !!! example
 	=== "Code"
@@ -80,7 +76,7 @@ Returns an array.
 				img = metadb.GetAlbumArt(); // omitting the type defaults to front
 
 				if (img) {
-					colours = img.GetColourScheme(10);
+					colours = JSON.parse(img.GetColourScheme(10));
 				}
 			}
 			window.Repaint();
@@ -91,7 +87,7 @@ Returns an array.
 				gr.DrawImage(img, 0, 0, 300, 300, 0, 0, img.Width, img.Height);
 
 				colours.forEach(function (colour, i) {
-					gr.FillRectangle(300, i * 30, window.Width - 300, 30, colour);
+					gr.FillRectangle(300, i * 30, window.Width - 300, 30, colour.Colour);
 
 					/*
 					The 2nd WriteTextSimple arg is the font. Leaving it as an empty string so defaults of Segoe UI and 16px are used.
@@ -100,7 +96,7 @@ Returns an array.
 					which calculates whether to use black or white for the text colour depending on
 					the background colour.
 					*/
-					gr.WriteTextSimple('Some text', '', DetermineTextColour(colour), 300, i * 30, window.Width - 300, 30, 2, 2);
+					gr.WriteTextSimple('Some text', '', DetermineTextColour(colour.Colour), 300, i * 30, window.Width - 300, 30, 2, 2);
 				});
 			}
 		}
