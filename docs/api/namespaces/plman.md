@@ -244,7 +244,8 @@ Use this to determine the type(s) of locks applied to the specified playlist.
 	}
 	```
 
-For convenience, these methods are included in `helpers.js`. Each one takes a single `playlistIndex` argument.
+For convenience, these methods are included in `helpers.js`. Each one takes a single
+`playlistIndex` argument amd returns a `boolean` value.
 
 ```js
 PlaylistCanAddItems
