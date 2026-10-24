@@ -44,16 +44,16 @@ See also: [utils.LoadBitmap](../namespaces/utils.md#utilsloadbitmappath-max_size
 No return value.
 
 ## `GetColourScheme()`
-Extracts up to 10 colours from the source image and they are returned as
-a stringified `JSON` array. You'll need to use `JSON.parse` before using. Each
-array item will contain `Colour` and `Luminance` values.
+Extracts up to 10 colours from the source image.
+
+Returns an array.
 
 !!! example
 	=== "Code"
 		```js
 		'use strict';
 
-		include(fb.ComponentPath + 'helpers.js');
+		include('helpers');
 
 		// Tracks playlist selection
 
@@ -73,7 +73,7 @@ array item will contain `Colour` and `Luminance` values.
 				img = metadb.GetAlbumArt(); // omitting the type defaults to front
 
 				if (img) {
-					colours = JSON.parse(img.GetColourScheme(10));
+					colours = img.GetColourScheme();
 				}
 			}
 			window.Repaint();
@@ -84,7 +84,7 @@ array item will contain `Colour` and `Luminance` values.
 				gr.DrawImage(img, 0, 0, 300, 300, 0, 0, img.Width, img.Height);
 
 				colours.forEach(function (colour, i) {
-					gr.FillRectangle(300, i * 30, window.Width - 300, 30, colour.Colour);
+					gr.FillRectangle(300, i * 30, window.Width - 300, 30, colour);
 
 					/*
 					The 2nd WriteTextSimple arg is the font. Leaving it as an empty string so defaults of Segoe UI and 16px are used.
@@ -93,7 +93,7 @@ array item will contain `Colour` and `Luminance` values.
 					which calculates whether to use black or white for the text colour depending on
 					the background colour.
 					*/
-					gr.WriteTextSimple('Some text', '', DetermineTextColour(colour.Colour), 300, i * 30, window.Width - 300, 30, 2, 2);
+					gr.WriteTextSimple('Some text', '', DetermineTextColour(colour), 300, i * 30, window.Width - 300, 30, 2, 2);
 				});
 			}
 		}
