@@ -1,6 +1,6 @@
 !!! example
 	```js
-	include(fb.ComponentPath + 'helpers.js');
+	include('helpers');
 
 	// Click anywhere to open menu and change background colour.
 

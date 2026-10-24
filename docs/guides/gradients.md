@@ -87,7 +87,7 @@ For a diagonal effect, you can do something like this:
 
 !!! example
 	```js
-	include(fb.ComponentPath + 'helpers.js');
+	include('helpers');
 
 	var stops = [
 		[0, RGB(255, 0, 0)],

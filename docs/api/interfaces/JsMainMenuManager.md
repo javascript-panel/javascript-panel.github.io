@@ -15,7 +15,7 @@ Returns a `boolean` value.
 
 !!! example
 	```js
-	include(fb.ComponentPath + 'helpers.js');
+	include('helpers');
 
 	// Click anywhere in the panel to open the menu.
 

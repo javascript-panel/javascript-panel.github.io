@@ -158,7 +158,7 @@ other components, a file selection from Explorer, etc.
 
 !!! example
 	```js
-	include(fb.ComponentPath + 'helpers.js');
+	include('helpers');
 
 	function on_mouse_rbtn_up(x, y) {
 		var ap = plman.ActivePlaylist;

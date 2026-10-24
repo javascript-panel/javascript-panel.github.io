@@ -98,7 +98,7 @@ stored and returned.
 
 !!! example
 	```js
-	include(fb.ComponentPath + 'helpers.js');
+	include('helpers');
 
 	var default_colour = RGB(255, 0, 0);
 

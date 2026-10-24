@@ -135,7 +135,7 @@ No return value.
 
 !!! example
 	```js
-	include(fb.ComponentPath + 'helpers.js');
+	include('helpers');
 
 	var img = utils.LoadImage(fb.ComponentPath + 'samples\\images\\1.webp');
 	var blur_img = null;

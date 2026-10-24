@@ -1,8 +1,14 @@
 All of these are provided in `helpers.js` bundled with the component. You
 can include it for use in any script like this.
 
-```
+```js
 include(fb.ComponentPath + 'helpers.js');
+```
+
+For convenience, you may omit the full path and extension
+
+```js
+include('helpers');
 ```
 
 ## DWRITE_FONT_WEIGHT
