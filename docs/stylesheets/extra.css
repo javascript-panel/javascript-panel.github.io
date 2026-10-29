@@ -4,3 +4,7 @@
 .md-header--shadow { background-color: RGB(246, 248, 250) }
 .md-footer-meta { background-color:RGB(246, 248, 250) }
 .md-grid { max-width: 1600px; }
+
+thead tr th, tbody tr td {
+	font-size: 0.75rem;
+}
