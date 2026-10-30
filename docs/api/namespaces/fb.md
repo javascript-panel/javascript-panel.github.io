@@ -39,10 +39,10 @@ from the supplied paths/urls which are sent to a new [on_locations_added](../cal
 
 !!! example
 	```js
-	var files = ["z:\\1.mp3", "z:\\2.flac"];
+	const files = ["z:\\1.mp3", "z:\\2.flac"];
 
 	function on_mouse_lbtn_dblclk() {
-		var task_id = fb.AddLocationsAsync(files);
+		const task_id = fb.AddLocationsAsync(files);
 		console.log("got task_id", task_id);
 	}
 
@@ -92,9 +92,9 @@ Returns a [JsMetadbHandleList](../interfaces/JsMetadbHandleList.md) instance.
 
 !!! example
 	```js
-	var handle = fb.GetFocusItem();
-	var handle_list = fb.CreateHandleList(handle);
-	var image_path = ...
+	const handle = fb.GetFocusItem();
+	const handle_list = fb.CreateHandleList(handle);
+	const image_path = ...
 	handle_list.AttachImage(image_path, 0);
 	```
 
@@ -161,25 +161,26 @@ other components, a file selection from Explorer, etc.
 	include('helpers');
 
 	function on_mouse_rbtn_up(x, y) {
-		var ap = plman.ActivePlaylist;
+		const ap = plman.ActivePlaylist;
 
 		// PlaylistCanAddItems is defined in helpers.js, it uses
 		// plman.GetPlaylistLockFilterMask to determine if the active playlist
 		// permits adding items
 		// MF_STRING and MF_GRAYED are also defined there.
 
-		var can_paste_flag = PlaylistCanAddItems(ap) && fb.CheckClipboardContents() ? MF_STRING : MF_GRAYED;
+		const can_paste_flag = PlaylistCanAddItems(ap) && fb.CheckClipboardContents() ? MF_STRING : MF_GRAYED;
 
-		var menu = window.CreatePopupMenu();
+		const menu = window.CreatePopupMenu();
 		menu.AppendMenuItem(can_paste_flag, 1, "Paste");
 
-		var idx = menu.TrackPopupMenu(x, y);
+		const idx = menu.TrackPopupMenu(x, y);
 
 		if (idx == 1) {
-			var handle_list = fb.GetClipboardContents();
+			const handle_list = fb.GetClipboardContents();
 			plman.InsertPlaylistItems(ap, plman.GetPlaylistItemCount(ap), handle_list);
 		}
 
+		// required to suppress default right click menu
 		return true;
 	}
 	```

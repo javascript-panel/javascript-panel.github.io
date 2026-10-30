@@ -29,7 +29,7 @@ No return value.
 
 !!! example
 	```js
-	var arr = ["e:\\1.mp3"];
+	const arr = ["e:\\1.mp3"];
 	plman.AddLocations(plman.ActivePlaylist, arr);
 	```
 
@@ -74,7 +74,7 @@ a dialog and is much more user friendly!
 	}
 
 	// Available mask values
-	var PlaylistLockFilterMask = {
+	const PlaylistLockFilterMask = {
 		filter_add : 1,
 		filter_remove : 2,
 		filter_reorder : 4,
@@ -84,10 +84,10 @@ a dialog and is much more user friendly!
 	};
 
 	// Setting a single value:
-	var mask = PlaylistLockFilterMask.filter_add;
+	let mask = PlaylistLockFilterMask.filter_add;
 
 	// To set multiple values at once, use | like this:
-	var mask2 = PlaylistLockFilterMask.filter_add | PlaylistLockFilterMask.filter_remove;
+	let mask2 = PlaylistLockFilterMask.filter_add | PlaylistLockFilterMask.filter_remove;
 
 	// You may add a value to an existing mask using a bitwise operator like this:
 	mask |= PlaylistLockFilterMask.filter_replace;
@@ -139,7 +139,7 @@ Returns the index of the newly created playlist.
 	the return value, you can switch to it.
 	*/
 
-	var new_index = plman.CreatePlaylist();
+	const new_index = plman.CreatePlaylist();
 	plman.ActivePlaylist = new_index;
 	```
 
@@ -241,7 +241,7 @@ Use this to determine the type(s) of locks applied to the specified playlist.
 
 !!! example
 	```js
-	var PlaylistLockFilterMask = {
+	const PlaylistLockFilterMask = {
 		filter_add : 1,
 		filter_remove : 2,
 		filter_reorder : 4,
@@ -250,7 +250,8 @@ Use this to determine the type(s) of locks applied to the specified playlist.
 		filter_remove_playlist : 32,
 	};
 
-	var mask = plman.GetPlaylistLockFilterMask(plman.ActivePlaylist)
+	const mask = plman.GetPlaylistLockFilterMask(plman.ActivePlaylist);
+
 	if (mask & PlaylistLockFilterMask.filter_add) {
 		console.log("Can't add files to this playlist");
 	}
@@ -314,10 +315,11 @@ Returns a [JsMetadbHandleList](../interfaces/JsMetadbHandleList.md) instance.
 
 !!! example
 	```js
-	var count = plman.RecyclerCount;
+	const count = plman.RecyclerCount;
+
 	if (count > 0) {
 		// retrieve handles from first deleted playlist
-		var handle_list = plman.GetRecyclerItems(0);
+		const handle_list = plman.GetRecyclerItems(0);
 	}
 	```
 
@@ -328,7 +330,8 @@ Returns a [JsMetadbHandleList](../interfaces/JsMetadbHandleList.md) instance.
 
 !!! example
 	```js
-	var count = plman.RecyclerCount;
+	const count = plman.RecyclerCount;
+
 	if (count > 0) {
 		// output name of first deleted playlist
 		console.log(plman.GetRecyclerName(0));
@@ -428,9 +431,10 @@ Purges deleted playlists so they cannot be restored.
 	plman.RecyclerPurge([0,2]);
 
 	// purges all deleted playlists
-	var arr = [];
-	var count = plman.RecyclerCount;
-	for (var i = 0; i < count; i++) {
+	const arr = [];
+	const count = plman.RecyclerCount;
+
+	for (let i = 0; i < count; i++) {
 		arr.push(i);
 	}
 	plman.RecyclerPurge(arr);
@@ -445,7 +449,8 @@ No return value.
 
 !!! example
 	```js
-	var count = plman.RecyclerCount;
+	const count = plman.RecyclerCount;
+
 	if (count > 0) {
 		// restore first deleted playlist
 		plman.RecyclerRestore(0);
@@ -488,11 +493,14 @@ No return value.
 !!! example
 	```js
 	// This would remove all empty playlists.
-	var arr = [];
-	for (var i = 0; i < plman.PlaylistCount; i++) {
+	const arr = [];
+
+	for (let i = 0; i < plman.PlaylistCount; i++) {
 		if (plman.GetPlaylistItemCount(i) == 0) arr.push(i);
 	}
-	if (arr.length) plman.RemovePlaylists(arr);
+
+	if (arr.length)
+		plman.RemovePlaylists(arr);
 	```
 
 ## `plman.RemovePlaylistSelection(playlistIndex[, crop])`
@@ -592,7 +600,7 @@ No return value.
 	// Selects first, third and fifth tracks in playlist.
 	// This does not affect other selected items.
 
-	var arr = [0, 2, 4];
+	const arr = [0, 2, 4];
 	plman.SetPlaylistSelection(plman.ActivePlaylist, arr, true);
 	```
 
@@ -618,8 +626,8 @@ No return value.
 	// Selects last item in playlist.
 	// This does not affect other selected items.
 
-	var ap = plman.ActivePlaylist;
-	var count = plman.GetPlaylistItemCount(ap);
+	const ap = plman.ActivePlaylist;
+	const count = plman.GetPlaylistItemCount(ap);
 	plman.SetPlaylistSelectionSingle(ap, count - 1, true);
 	```
 

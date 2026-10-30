@@ -100,11 +100,11 @@ stored and returned.
 	```js
 	include('helpers');
 
-	var default_colour = RGB(255, 0, 0);
+	const default_colour = RGB(255, 0, 0);
 
 	// Default colour is used on first run, otherwise colour
 	// saved on previous use.
-	var colour = window.GetProperty('BASIC.COLOUR.PICKER.COLOUR', default_colour);
+	let colour = window.GetProperty('BASIC.COLOUR.PICKER.COLOUR', default_colour);
 
 	function on_paint(gr) {
 		gr.Clear(colour);

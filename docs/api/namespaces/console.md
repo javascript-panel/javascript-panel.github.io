@@ -31,7 +31,7 @@ No return value.
 	console.log(1,2,3); // 1 2 3
 	console.log([1,2,3]); // [1,2,3]
 
-	var obj = {a:1};
+	const obj = {a:1};
 	console.log(obj); // Object {a=1}
 	console.log(JSON.stringify(obj)); // {"a":1}
 

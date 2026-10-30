@@ -18,9 +18,9 @@ Returns a `number`.
 
 !!! example
 	```js
-	var text = "blah";
-	var font = window.GetUIFont(0);
-	var width = utils.CalcTextWidth(text, font);
+	const text = "blah";
+	const font = window.GetUIFont(0);
+	const width = utils.CalcTextWidth(text, font);
 	```
 
 ## `utils.CheckFont(name)`
@@ -103,13 +103,13 @@ you can supply a vertical offset.
 	```js
 	include('helpers');
 
-	var font = CreateFontString('Segoe UI', 20);
-	var text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-	var layout = utils.CreateTextLayout(text, font);
-	var offset = 0;
-	var text_height = 0;
+	const font = CreateFontString('Segoe UI', 20);
+	const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+	const layout = utils.CreateTextLayout(text, font);
+	let offset = 0;
+	let text_height = 0;
 
-	var box = {
+	const box = {
 		x : 50,
 		y : 50,
 		w : 0,
@@ -159,13 +159,13 @@ It is expected date strings are timezone adjusted but timestamps are UTC (not ad
 
 !!! example
 	```js
-	var last_played_string = "2018-08-30 00:00:00";
-	var last_played_timestamp = utils.DateStringToTimestamp(last_played_string);
+	const last_played_string = "2018-08-30 00:00:00";
+	const last_played_timestamp = utils.DateStringToTimestamp(last_played_string);
 
-	var now = utils.Now();
+	const now = utils.Now();
 
 	// number of seconds in a day
-	var day = 24 * 60 * 60;
+	const day = 24 * 60 * 60;
 
 	// number of days since last played
 	console.log(Math.floor((now - last_played_timestamp) / day));
@@ -215,8 +215,8 @@ Returns a `string`.
 
 !!! example
 	```js
-	var playlist_items = plman.GetPlaylistItems(plman.ActivePlaylist);
-	var playlist_length_seconds = playlist_items.CalcTotalDuration();
+	const playlist_items = plman.GetPlaylistItems(plman.ActivePlaylist);
+	const playlist_length_seconds = playlist_items.CalcTotalDuration();
 	console.log(utils.FormatDuration(playlist_length_seconds)); // 5:24:44
 	```
 
@@ -229,8 +229,8 @@ Returns a `string`.
 
 !!! example
 	```js
-	var playlist_items = plman.GetPlaylistItems(plman.ActivePlaylist);
-	var playlist_bytes = playlist_items.CalcTotalSize()
+	const playlist_items = plman.GetPlaylistItems(plman.ActivePlaylist);
+	const playlist_bytes = playlist_items.CalcTotalSize()
 	console.log(utils.FormatFileSize(playlist_bytes)); // 601 MB
 	```
 
@@ -270,7 +270,7 @@ be `0` if the `index` is invalid.
 
 !!! example
 	```js
-	var splitter_colour = utils.GetSysColour(15);
+	const splitter_colour = utils.GetSysColour(15);
 	```
 
 ## `utils.GetSystemMetrics(index)`
@@ -291,7 +291,7 @@ Returns an array.
 
 !!! example
 	```js
-	var arr = utils.Glob("C:\\Pictures\\*.jpg");
+	const arr = utils.Glob("C:\\Pictures\\*.jpg");
 	```
 
 ## `utils.HashString(str)`
@@ -335,7 +335,7 @@ With `error_on_cancel` not set (or set to `false`), cancelling the dialog will r
 
 !!! example
 	```js
-	var username = utils.InputBox("Enter your username", "JavaScript Panel", "");
+	const username = utils.InputBox("Enter your username", "JavaScript Panel", "");
 	```
 
 Using the above example, you can't tell if `OK` or `Cancel` was
@@ -347,7 +347,7 @@ a script error when `Cancel` is pressed.
 !!! example
 	```js
 	try {
-		var username = utils.InputBox("Enter your name", "JavaScript Panel", "", true);
+		const username = utils.InputBox("Enter your name", "JavaScript Panel", "", true);
 		// OK was pressed.
 	} catch(e) {
 		// Dialog was closed by pressing Esc, Cancel or the Close button.
@@ -423,8 +423,9 @@ Returns a [MessageBox Return Value](../flags.md#messagebox-return-values).
 	```js
 	include('helpers');
 
-	var prompt = "Do you really want to open the Preferences?";
-	var title = "A very important question";
+	const prompt = "Do you really want to open the Preferences?";
+	const title = "A very important question";
+
 	if (utils.MessageBox(prompt, title, MB_YESNO | MB_ICONQUESTION) == IDYES) {
 		fb.ShowPreferences();
 	}
@@ -436,7 +437,7 @@ Returns a Unix timestamp.
 This is just shorthand instead of writing
 
 ```js
-var now = Math.round(new Date().getTime() / 1000);
+const now = Math.round(new Date().getTime() / 1000);
 ```
 
 ## `utils.ReadINI(path, section, key[, default_value])`
@@ -458,7 +459,7 @@ key=val
 
 !!! example
 	```js
-	var username = utils.ReadINI("e:\\my_file.ini", "Last.fm", "username");
+	const username = utils.ReadINI("e:\\my_file.ini", "Last.fm", "username");
 	```
 
 ## `utils.ReadTextFile(path[, codepage])`
@@ -477,15 +478,15 @@ was an error opening it.
 !!! example
 	=== "Simple"
 		```js
-		var path = "E:\\some text file.txt";
-		var text = utils.ReadTextFile(path);
+		const path = "E:\\some text file.txt";
+		const text = utils.ReadTextFile(path);
 		```
 
 	=== "Using utils.DetectCharset"
 		```js
-		var path = "E:\\some text file.txt";
-		var codepage = utils.DetectCharset(path);
-		var text = utils.ReadTextFile(path, codepage);
+		const path = "E:\\some text file.txt";
+		const codepage = utils.DetectCharset(path);
+		const text = utils.ReadTextFile(path, codepage);
 		```
 
 ## `utils.ReadUTF8(path)`
@@ -549,7 +550,8 @@ No return value.
 	utils.Run('notepad');
 	utils.Run('https://www.foobar2000.org');
 
-	var file = ...
+	const file = ...
+
 	if (utils.IsFile(file)) {
 		utils.Run('explorer', '/select,"' + file + '"');
 	}
@@ -594,7 +596,7 @@ Returns a `string`. It will be adjusted to your local time zone.
 
 !!! example
 	```js
-	var now = utils.Now();
+	const now = utils.Now();
 	console.log(utils.TimestampToDateString(now));
 	```
 

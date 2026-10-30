@@ -43,7 +43,7 @@ Returns a `JSON` array in string form so you need to use `JSON.parse` on the res
 
 !!! example
 	```js
-	var str = playback.GetDSPPresets();
+	const str = playback.GetDSPPresets();
 	console.log(str);
 	```
 
@@ -61,10 +61,10 @@ Returns a `JSON` array in string form so you need to use `JSON.parse` on the res
 	```
 
 	```js
-	var arr = JSON.parse(str);
+	const arr = JSON.parse(str);
 	console.log(arr.length); // number of presets
 
-	for (var i = 0; i < arr.length; i++) {
+	for (let i = 0; i < arr.length; i++) {
 		if (arr[i].Active) {
 			// this is the active preset, do something with the Name??
 		}
@@ -90,8 +90,9 @@ or used with `playback.Order`.
 
 	=== "Loop"
 		```js
-		var arr = playback.GetOrderNames();
-		for (var i = 0; i < arr.length; i++) {
+		const arr = playback.GetOrderNames();
+
+		for (let i = 0; i < arr.length; i++) {
 			console.log(arr[i]);
 		}
 		```
@@ -101,7 +102,7 @@ Returns a `JSON` array in string form so you need to use `JSON.parse` on the res
 
 !!! example
 	```js
-	var str = playback.GetOutputDevices();
+	const str = playback.GetOutputDevices();
 	console.log(str);
 	```
 
@@ -165,7 +166,7 @@ Returns a `JSON` array in string form so you need to use `JSON.parse` on the res
 	```
 
 	```js
-	var arr = JSON.parse(str);
+	const arr = JSON.parse(str);
 	console.log(arr.length); // number of devices
 	```
 
@@ -180,16 +181,16 @@ device name or use [playback.SetOutputDevice](#playbacksetoutputdeviceoutputid-d
 !!! example
 	=== "RunMainMenuCommand"
 		```js
-		var str = playback.GetOutputDevices();
-		var arr = JSON.parse(str);
+		const str = playback.GetOutputDevices();
+		const arr = JSON.parse(str);
 		// Assuming same list from above, switch output to "Primary Sound Driver [exclusive]".
 		fb.RunMainMenuCommand("Playback/Device/" + arr[5].Name);
 		```
 
 	=== "SetOutputDevice"
 		```js
-		var str = playback.GetOutputDevices();
-		var arr = JSON.parse(str);
+		const str = playback.GetOutputDevices();
+		const arr = JSON.parse(str);
 		// Assuming same list from above, switch output to "Primary Sound Driver [exclusive]".
 		playback.SetOutputDevice(arr[5].OutputID, arr[5].DeviceID);
 		```
