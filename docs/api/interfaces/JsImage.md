@@ -16,21 +16,27 @@ Return an [JsBitmap](JsBitmap.md) instance.
 
 !!! example
 	```js
-	var g_bitmap = null;
+	let g_bitmap = null;
+
+	if (playback.IsPlaying) {
+		update_bitmap();
+	}
 
 	function update_bitmap() {
+		const handle = playback.GetNowPlaying();
+		const image = handle?.GetAlbumArt(0); // 0 = front
+		g_bitmap = image?.CreateBitmap();
+	}
+
+	function on_paint(gr) {
 		if (g_bitmap) {
-			g_bitmap = null;
+			gr.DrawBitmap(g_bitmap, 0, 0, g_bitmap.Width, g_bitmap.Height, 0, 0, g_bitmap.Width, g_bitmap.Height);
 		}
-
-		var handle = fb.GetNowPlaying();
-
-		if (handle) {
-			var image = handle.GetAlbumArt(0); // 0 = front
-			if (image) {
-				g_bitmap = image.CreateBitmap();
-			}
-		}
+	}
+	
+	function on_playback_new_track() {
+		update_bitmap()
+		window.Repaint();
 	}
 	```
 
@@ -57,25 +63,14 @@ Returns an array.
 
 		// Tracks playlist selection
 
-		var img = null;
-		var colours = [];
+		let img;
+		let colours = [];
 		on_item_focus_change();
 
 		function on_item_focus_change() {
-			if (img) {
-				img = null;
-			}
-
-			colours = [];
-			var metadb = fb.GetFocusItem();
-
-			if (metadb) {
-				img = metadb.GetAlbumArt(); // omitting the type defaults to front
-
-				if (img) {
-					colours = img.GetColourScheme();
-				}
-			}
+			const metadb = fb.GetFocusItem();
+			img = metadb?.GetAlbumArt();
+			colours = img?.GetColourScheme() || [];
 			window.Repaint();
 		}
 
@@ -83,7 +78,7 @@ Returns an array.
 			if (img && colours.length) {
 				gr.DrawImage(img, 0, 0, 300, 300, 0, 0, img.Width, img.Height);
 
-				colours.forEach(function (colour, i) {
+				colours.forEach((colour, i) => {
 					gr.FillRectangle(300, i * 30, window.Width - 300, 30, colour);
 
 					/*
@@ -137,9 +132,9 @@ No return value.
 	```js
 	include('helpers');
 
-	var img = utils.LoadImage(fb.ComponentPath + 'samples\\images\\1.webp');
-	var blur_img = null;
-	var radius = 20;
+	const img = utils.LoadImage(fb.ComponentPath + 'test\\images\\1.webp');
+	let blur_img = null;
+	let radius = 20;
 
 	StackBlur(radius);
 
@@ -157,10 +152,12 @@ No return value.
 
 	function on_mouse_wheel(step) {
 		radius += step * 5;
+		
 		if (radius < 2)
 			radius = 2;
-		if (radius > 254)
+		else if (radius > 254)
 			radius = 254;
+	
 		StackBlur(radius);
 		window.Repaint();
 	}

@@ -16,9 +16,7 @@ easier.
 
 A `$country_flag` function has been added and you can use it like this:
 
-```
-$font(Twemoji Mozilla,16)$country_flag(%country%)
-```
+`$font(Twemoji Mozilla,16)$country_flag(%country%)`
 
 !!! note
 	The use of `$font` is detailed [here](font-rgb.md).
@@ -30,20 +28,16 @@ $font(Twemoji Mozilla,16)$country_flag(%country%)
 	// $font() with no args resets back to the default_font supplied to
 	// DrawStyledText in on_paint
 	// also includes $rgb example
-	var tfo = fb.TitleFormat(
-		"[$font(Twemoji Mozilla,18)$country_flag(%country%)$font() ]$rgb(255,0,0)%artist%"
+	const tfo = fb.TitleFormat(
+		"[$font(Noto Color Emoji,16)$country_flag(%country%)$font() ]$rgb(255,0,0)%artist%"
 	);
-	var str = "";
+	
+	let str = "";
 
 	refresh();
 
 	function refresh() {
-		var item = fb.GetFocusItem();
-		if (item) {
-			str = item.FormatTitle(tfo);
-		} else {
-			str = "";
-		}
+		str = fb.GetFocusItem()?.FormatTitle(tfo) || "";
 	}
 
 	function on_item_focus_change() {
@@ -72,8 +66,8 @@ which accepts a 2 letter country code or the full country name. See
 	```js
 	include('helpers');
 
-	var font = CreateFontString("Twemoji Mozilla", 24);
-	var flag = utils.GetCountryFlag("GB");
+	const font = CreateFontString("Noto Color Emoji", 24);
+	const flag = utils.GetCountryFlag("GB");
 
 	function on_paint(gr) {
 		gr.WriteText(flag, font, 0, 0, 0, window.Width, window.Height, 2, 2);

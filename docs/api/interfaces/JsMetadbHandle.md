@@ -1,7 +1,7 @@
 This will be used in the examples below:
 
 ```js
-var handle = fb.GetFocusItem();
+const handle = fb.GetFocusItem();
 ```
 
 !!! note
@@ -56,10 +56,7 @@ Returns a `string`.
 	```js
 	const tfo = fb.TitleFormat("%artist%");
 	const item = fb.GetFocusItem();
-
-	if (item) {
-		const artist = item.FormatTitle(tfo);
-	}
+	const artist = item?.FormatTitle(tfo) || '';
 	```
 
 ## `GetAlbumArt([art_id, want_stub])`

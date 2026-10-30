@@ -1,19 +1,19 @@
 This will be used in the examples below:
 
 ```js
-var handle_list = plman.GetPlaylistItems(plman.ActivePlaylist);
+const handle_list = plman.GetPlaylistItems(plman.ActivePlaylist);
 ```
 
 You can create an empty handle list with [fb.CreateHandleList](../namespaces/fb.md#fbcreatehandlelisthandle).
 ```js
-var handle_list = fb.CreateHandleList();
+const handle_list = fb.CreateHandleList();
 ```
 
 If you need to create a handle list from a single handle, you can do this...
 ```js
-var handle = fb.GetFocusItem();
+const handle = fb.GetFocusItem();
 if (handle) {
-	var handle_list = fb.CreateHandleList(handle);
+	const handle_list = fb.CreateHandleList(handle);
 }
 ```
 
@@ -55,9 +55,10 @@ no need to remove it first.
 
 !!! example
 	```js
-	var handle_list = plman.GetPlaylistItems(plman.ActivePlaylist);
+	const handle_list = plman.GetPlaylistItems(plman.ActivePlaylist);
+
 	if (handle_list.Count > 0) {
-		var image_path = "C:\\path\\to\\image.jpg";
+		const image_path = "C:\\path\\to\\image.jpg";
 		handle_list.AttachImage(image_path, 0);
 	}
 	```
@@ -73,7 +74,7 @@ Returns a [JsMetadbHandleList](JsMetadbHandleList.md) instance.
 
 !!! example
 	```js
-	var handle_list2 = handle_list.Clone();
+	const handle_list2 = handle_list.Clone();
 	```
 
 ## `CopyToClipboard()`
@@ -82,7 +83,7 @@ Returns a `boolean` value.
 !!! example
 	=== "Copy playlist items"
 		```js
-		var handle_list = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
+		const handle_list = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
 		handle_list.CopyToClipboard();
 		```
 
@@ -100,11 +101,11 @@ Returns a `boolean` value.
 			filter_remove_playlist : 32,
 		};
 
-		var ap = plman.ActivePlaylist;
-		var mask = plman.GetPlaylistLockFilterMask(ap);
+		const ap = plman.ActivePlaylist;
+		const mask = plman.GetPlaylistLockFilterMask(ap);
 
 		if (!(mask & PlaylistLockFilterMask.filter_remove)) {
-			var handle_list = plman.GetPlaylistSelectedItems(ap);
+			const handle_list = plman.GetPlaylistSelectedItems(ap);
 			if (handle_list.CopyToClipboard()) {
 				plman.UndoBackup(ap);
 				plman.RemovePlaylistSelection(ap);
@@ -161,7 +162,7 @@ Returns a [JsMetadbHandle](JsMetadbHandle.md) instance.
 
 !!! example
 	```js
-	var handle = handle_list.GetItem(0);
+	const handle = handle_list.GetItem(0);
 	```
 
 ## `GetLibraryRelativePaths()`
@@ -181,9 +182,9 @@ folder removed from the path of each handle list item.
 	then...
 
 	```js
-	var handle_list = fb.GetLibraryItems();
+	const handle_list = fb.GetLibraryItems();
 	handle_list.SortByRelativePath();
-	var relative_paths = handle_list.GetLibraryRelativePaths();
+	const relative_paths = handle_list.GetLibraryRelativePaths();
 	console.log(relative_paths[0]);
 	// Albums\Artist\Some Album\Some Song.flac
 	```
@@ -198,8 +199,8 @@ from 3rd party components if present.
 
 ??? example
 	```js
-	var handle_list = plman.GetPlaylistItems(plman.ActivePlaylist);
-	var str = handle_list.GetOtherInfo();
+	const handle_list = plman.GetPlaylistItems(plman.ActivePlaylist);
+	const str = handle_list.GetOtherInfo();
 	console.log(str);
 	```
 
@@ -306,17 +307,17 @@ The allows library viewers to cater for multiple value tags.
 
 !!! example
 	```js
-	var items = fb.GetLibraryItems();
-	var arr = items.GroupByTag('artist');
+	const items = fb.GetLibraryItems();
+	const arr = items.GroupByTag('artist');
 
 	// note the +=2 here
 	// even elements are the tag value
 	// odd number elements are the handles for that tag value
-	for (var i = 0; i < arr.length; i += 2) {
-		var artist = arr[i];
+	for (let i = 0; i < arr.length; i += 2) {
+		const artist = arr[i];
 
 		// the order of these will be random. You must sort them yourself.
-		var artist_handles = arr[i + 1];
+		const artist_handles = arr[i + 1];
 	}
 	```
 
@@ -330,7 +331,7 @@ No return value.
 
 !!! example
 	```js
-	var handle = ...
+	const handle = ...
 	handle_list.InsertItem(0, handle);
 	```
 
@@ -351,8 +352,8 @@ No return value.
 
 !!! example
 	```js
-	var one = plman.GetPlaylistItems(0);
-	var two = plman.GetPlaylistItems(1);
+	const one = plman.GetPlaylistItems(0);
+	const two = plman.GetPlaylistItems(1);
 	one.MakeDifference(two);
 	```
 
@@ -369,8 +370,8 @@ No return value.
 
 !!! example
 	```js
-	var one = plman.GetPlaylistItems(0);
-	var two = plman.GetPlaylistItems(1);
+	const one = plman.GetPlaylistItems(0);
+	const two = plman.GetPlaylistItems(1);
 	one.MakeIntersection(two);
 	```
 
@@ -432,7 +433,7 @@ No return value.
 	```js
 	// This ensures the handle list will
 	// contain no more than 1 track by the same artist.
-	var handle_list = fb.GetLibraryItems();
+	const handle_list = fb.GetLibraryItems();
 	handle_list.Randomise();
 	handle_list.RemoveDuplicatesByFormat("%artist%");
 	```
@@ -465,7 +466,7 @@ Returns `true` if a matching command was found, `false` otherwise.
 
 !!! example
 	```js
-	var handle_list = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
+	const handle_list = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
 	handle_list.RunContextCommand("Properties");
 	```
 
@@ -482,7 +483,7 @@ parent folder must already exist.
 
 !!! example
 	```js
-	var handle_list = plman.GetPlaylistItems(plman.ActivePlaylist);
+	const handle_list = plman.GetPlaylistItems(plman.ActivePlaylist);
 	handle_list.SaveAs("z:\\blah.fpl");
 	```
 
@@ -496,8 +497,8 @@ No return value.
 
 !!! example
 	```js
-	var handle_list = fb.GetLibraryItems();
-	var pattern = "%album artist%|%date%|%album%|%discnumber%|%tracknumber%";
+	const handle_list = fb.GetLibraryItems();
+	const pattern = "%album artist%|%date%|%album%|%discnumber%|%tracknumber%";
 	handle_list.SortByFormat(pattern, 1);
 	```
 
@@ -539,12 +540,12 @@ You must supply a stringifed `array` or `object` as per these examples:
 
 		```js
 		// assume we've selected one album
-		var handle_list = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
+		const handle_list = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
 
 		// an empty array
-		var arr = [];
+		const arr = [];
 
-		for (var i = 0; i < handle_list.Count; i++) {
+		for (let i = 0; i < handle_list.Count; i++) {
 			// Each element of the array must be an object
 			// of key names/values, indicated by the curly braces.
 			arr.push({
@@ -555,7 +556,7 @@ You must supply a stringifed `array` or `object` as per these examples:
 			});
 		}
 
-		var str = JSON.stringify(arr);
+		const str = JSON.stringify(arr);
 
 		handle_list.UpdateFileInfoFromJSON(str);
 		```
@@ -565,14 +566,14 @@ You must supply a stringifed `array` or `object` as per these examples:
 		`handle list`, you can use an `object` instead.
 
 		```js
-		var handle_list = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
+		const handle_list = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
 
-		var obj = {
+		const obj = {
 			"album" : "Greatest Hits",
 			"genre" : ["Rock", "Hard Rock"]
 		};
 
-		var str = JSON.stringify(obj);
+		const str = JSON.stringify(obj);
 		handle_list.UpdateFileInfoFromJSON(str);
 		```
 
@@ -580,7 +581,7 @@ You can use blank values to clear any existing tags.
 
 !!! example
 	```js
-	var obj = {
+	const obj = {
 		"album" : ""
 	};
 	```

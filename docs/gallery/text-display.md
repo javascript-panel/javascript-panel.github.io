@@ -25,9 +25,7 @@ Also, you can check [Country Flags](../guides/country-flags.md) if you store cou
 Finally ,`$since` can display the difference between now and a given date/time string.
 Use with `Playback Statistics` `%last_played%` or similar.
 
-```
-$since(%last_played%)
-```
+`$since(%last_played%)`
 
 could display something like `5wk 2d`.
 

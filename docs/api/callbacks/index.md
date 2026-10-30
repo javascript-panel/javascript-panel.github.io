@@ -6,9 +6,7 @@
 
 	It's not good practice to include empty callbacks like this:
 	```js
-	function on_always_on_top_changed(state) {
-
-	}
+	function on_always_on_top_changed(state) {}
 	```
 
 Check these pages for callback documentation which has recently been split into separate categories:

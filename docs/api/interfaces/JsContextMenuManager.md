@@ -35,15 +35,15 @@ No return value.
 	```js
 	// click panel to see context menu for playing track
 	function on_mouse_lbtn_up(x, y) {
-		var menu = window.CreatePopupMenu();
-		var context = fb.CreateContextMenuManager();
+		if (!playback.IsPlaying)
+			return;
+			
+		const menu = window.CreatePopupMenu();
+		const context = fb.CreateContextMenuManager();
+		context.InitNowPlaying();
+		context.BuildMenu(menu, 1);
+		const idx = menu.TrackPopupMenu(x, y);
 
-		if (fb.IsPlaying) {
-			context.InitNowPlaying();
-			context.BuildMenu(menu, 1);
-		}
-
-		var idx = menu.TrackPopupMenu(x, y);
 		if (idx > 0) {
 			context.ExecuteByID(idx - 1);
 		}

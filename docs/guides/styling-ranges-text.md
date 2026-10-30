@@ -14,6 +14,8 @@ the `utils.CreateTextLayout` examples below.
 
 !!! example
 	```js
+	'use strict';
+
 	include('helpers');
 
 	/*
@@ -23,24 +25,24 @@ the `utils.CreateTextLayout` examples below.
 	how the start value is incremented for each word.
 	*/
 
-	var installed_fonts = utils.ListFonts();
-	var text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+	const installed_fonts = utils.ListFonts();
+	const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
-	var colour_string = '';
-	var font_string = '';
+	let colour_string = '';
+	let font_string = '';
 
 	// split text in to whole words for styling
-	var words = text.split(' ');
+	const words = text.split(' ');
 
 	refresh();
 
 	function refresh() {
-		var fonts = [], colours = [];
-		var start = 0;
+		const fonts = [], colours = [];
+		let start = 0;
 
-		words.forEach(function(word, i) {
+		words.forEach((word, i) => {
 			// length of word plus following space
-			var len = word.length + 1;
+			const len = word.length + 1;
 
 			colours.push({
 				// when using an array of colours, Start and Length are mandatory
@@ -79,38 +81,45 @@ This example demonstrates scrollable text, a single font and a different colour 
 
 !!! example
 	```js
+	'use strict';
+
 	include('helpers');
 
-	// see CreateFontString in helpers.js
-	var font = CreateFontString('Segoe UI', 24);
-	var text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-	var layout = utils.CreateTextLayout(text, font);
-	var offset = 0;
-	var text_height = 0;
+	const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+	const font_string = CreateFontString('Segoe UI', 20);
+	const layout = utils.CreateTextLayout(text, font_string);
+	let offset = 0;
+	let text_height = 0;
 
 	// split text in to whole words for colouring
-	var words = text.split(' ');
-	var colour_string = '';
+	const words = text.split(' ');
+	let colour_string = '';
 
 	refresh();
 
 	function refresh() {
-		var colours = [];
-		var start = 0;
-		words.forEach(function(word, i) {
-			var len = word.length + 1;
+		const colours = [];
+		let start = 0;
+
+		words.forEach((word, i) => {
+			// length of word plus following space
+			const len = word.length + 1;
+
 			colours.push({
 				// when using an array, Start and Length are mandatory
 				Start : start,
 				Length : len,
 				Colour : RGB(Math.random() * 200, Math.random() * 200, Math.random() * 200),
 			});
+
+			// increment start position for next word
 			start += len;
 		});
+
 		colour_string = JSON.stringify(colours);
 	}
 
-	var box = {
+	const box = {
 		x : 50,
 		y : 50,
 		w : 0,
@@ -153,27 +162,30 @@ This example demonstrates scrollable text, per-word colouring and per-word fonts
 
 !!! example
 	```js
+	'use strict';
+
 	include('helpers');
 
-	var installed_fonts = utils.ListFonts();
-	var text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-	var layout = null;
-	var offset = 0;
-	var text_height = 0;
-	var colour_string = '';
+	const installed_fonts = utils.ListFonts();
+	const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+	let layout = null;
+	let offset = 0;
+	let text_height = 0;
+	let colour_string = '';
 
 	// split text in to whole words for styling
-	var words = text.split(' ');
+	const words = text.split(' ');
 
 	refresh();
 
 	function refresh() {
-		var fonts = [];
-		var colours = [];
-		var start = 0;
-		words.forEach(function(word, i) {
+		const fonts = [];
+		const colours = [];
+		let start = 0;
+
+		words.forEach((word, i) => {
 			// length of word plus following space
-			var len = word.length + 1;
+			const len = word.length + 1;
 
 			fonts.push({
 				// When using an array of fonts, Start and Length are mandatory
@@ -200,14 +212,14 @@ This example demonstrates scrollable text, per-word colouring and per-word fonts
 		});
 
 		// Stringify the fonts and create the text layout
-		var font_string = JSON.stringify(fonts);
+		const font_string = JSON.stringify(fonts);
 		layout = utils.CreateTextLayout(text, font_string);
 
 		// Stringify the colours. This is passed to WriteTextLayout inside on_paint
 		colour_string = JSON.stringify(colours);
 	}
 
-	var box = {
+	const box = {
 		x : 50,
 		y : 50,
 		w : 0,

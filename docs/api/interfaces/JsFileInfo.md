@@ -3,22 +3,24 @@ without knowing their name in advance.
 
 !!! example
 	```js
-	var handle = fb.GetFocusItem();
+	const handle = fb.GetFocusItem();
 
-	var obj = {};
-	var f = handle.GetFileInfo();
+	if (handle) {
+		const obj = {};
+		const f = handle.GetFileInfo();
 
-	for (var i = 0; i < f.MetaCount; i++) {
-		var name = f.MetaName(i).toUpperCase();
-		obj[name] = [];
+		for (let i = 0; i < f.MetaCount; i++) {
+			const name = f.MetaName(i).toUpperCase();
+			obj[name] = [];
 
-		var num = f.MetaValueCount(i);
-		for (var j = 0; j < num; j++) {
-			obj[name].push(f.MetaValue(i, j));
+			const num = f.MetaValueCount(i);
+			for (let j = 0; j < num; j++) {
+				obj[name].push(f.MetaValue(i, j));
+			}
 		}
-	}
 
-	console.log(JSON.stringify(obj, null, 4));
+		console.log(JSON.stringify(obj, null, 4));
+	}
 	```
 
 	``` markdown title="Example output"

@@ -25,7 +25,8 @@ No return value.
 
 !!! example
 	```js
-	var text = "...";
+	const text = "...";
+
 	if (tooltip.Text != text) {
 		tooltip.Text = text;
 		tooltip.Activate();
@@ -75,9 +76,9 @@ No return value.
 
 !!! example
 	```js
-	var g_tooltip = window.CreateTooltip();
-	var g_trackingMouse = false;
-	var g_oldX, g_oldY;
+	const g_tooltip = window.CreateTooltip();
+	let g_trackingMouse = false;
+	let g_oldX, g_oldY;
 
 	function on_mouse_move(x, y) {
 		if (!g_trackingMouse) {

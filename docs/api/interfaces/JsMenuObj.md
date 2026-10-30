@@ -4,16 +4,16 @@
 
 	// Click anywhere to open menu and change background colour.
 
-	var colours = [
+	const colours = [
 		RGB(255, 0, 0),
 		RGB(0, 255, 0),
 		RGB(0, 0, 255)
 	];
 
-	var colour_index = 0;
+	let colour_index = 0;
 
 	function on_mouse_lbtn_down(x, y) {
-		var menu = window.CreatePopupMenu();
+		const menu = window.CreatePopupMenu();
 
 		// start at 1, not 0
 		menu.AppendMenuItem(MF_STRING, 1, 'Red');
@@ -23,7 +23,7 @@
 		// mark current selection
 		menu.CheckMenuRadioItem(1, 3, colour_index + 1);
 
-		var idx = menu.TrackPopupMenu(x, y);
+		const idx = menu.TrackPopupMenu(x, y);
 
 		switch (idx) {
 			case 0:

@@ -23,7 +23,7 @@ Anyone reading this should be familiar with valid `colour` values!
 So the simplest example can be:
 
 ```js
-var stops = [
+const stops = [
 	[0, RGB(255, 0, 0)],
 	[1, RGB(0, 0, 255)],
 ];
@@ -32,7 +32,7 @@ var stops = [
 If you want to insert more colours:
 
 ```js
-var stops = [
+const stops = [
 	[0, RGB(255, 0, 0)],
 	[0.5, RGB(0, 255, 0)],
 	[1, RGB(0, 0, 255)],
@@ -45,7 +45,7 @@ Now we know what `stops` are, we can create a [linear brush](https://learn.micro
 A linear brush must have 3 properties: `Start`, `End` and `Stops`.
 
 ```js
-var linear_brush = {
+const linear_brush = {
 	Start : [0, 0], // x and y values
 	End : [0, 0], // x and y values
 	Stops: stops
@@ -58,12 +58,12 @@ If we lift `FillGradientRectangle` from `helpers.js`, we can inspect a working e
 
 ```js
 function FillGradientRectangle(gr, x, y, w, h, direction, colour1, colour2) {
-	var stops = [
+	const stops = [
 		[0, colour1],
 		[1, colour2]
 	];
 
-	var brush = {Start : [0, 0], Stops: stops};
+	const brush = {Start : [0, 0], Stops: stops};
 
 	if (direction == 0) // vertical
 		brush.End = [0, h];
@@ -89,12 +89,12 @@ For a diagonal effect, you can do something like this:
 	```js
 	include('helpers');
 
-	var stops = [
+	const stops = [
 		[0, RGB(255, 0, 0)],
 		[1, RGB(0, 0, 255)],
 	];
 
-	var linear_brush = {
+	const linear_brush = {
 		Stops: stops,
 		Start: [0, 0]
 	};

@@ -11,7 +11,7 @@ using `JSON.stringify` on an object or returned from `window.GetUIFont`.
 These are all of the supported properties but none are mandatory.
 
 ```js
-var font = JSON.stringify({
+const font = JSON.stringify({
 	Name : name, // string
 	Size : size, // number
 	Weight : weight, // number
@@ -32,8 +32,8 @@ of `Segoe UI` and `16px` will be used.
 
 !!! example
 	```js
-	var font_str = "";
-	var colour = RGB(0, 0, 0);
+	const font_str = "";
+	const colour = RGB(0, 0, 0);
 	gr.WriteText("some text", font_str, colour, 0, 0, window.Width, window.Height);
 	```
 
@@ -41,7 +41,7 @@ of `Segoe UI` and `16px` will be used.
 
 !!! example
 	```js
-	var font_str = window.GetUIFont(0);
+	const font_str = window.GetUIFont(0);
 	console.log(font_str);
 	```
 
@@ -59,8 +59,8 @@ of `Segoe UI` and `16px` will be used.
 
 !!! example
 	```js
-	var font_str = window.GetUIFont(0);
-	var colour = RGB(0, 0, 0);
+	const font_str = window.GetUIFont(0);
+	const colour = RGB(0, 0, 0);
 
 	function on_paint(gr) {
 		gr.WriteText("some text", font_str, colour, 0, 0, window.Width, window.Height);
@@ -78,8 +78,8 @@ and then stringify it again.
 
 !!! example
 	```js
-	var font_str = window.GetUIFont(0);
-	var font_obj = JSON.parse(font_str);
+	const font_str = window.GetUIFont(0);
+	const font_obj = JSON.parse(font_str);
 
 	// double the size, leave other properties untouched.
 	font_obj.Size = font_obj.Size * 2;
@@ -105,8 +105,8 @@ function CreateFontString(name, size, bold) {
 Now it's easier to write...
 
 ```js
-var font = CreateFontString("Verdana", 16);
-var large_bold_font = CreateFontString("Verdana", 24, true);
+const font = CreateFontString("Verdana", 16);
+const large_bold_font = CreateFontString("Verdana", 24, true);
 ```
 
 You can of course write your own if you need more customisation.

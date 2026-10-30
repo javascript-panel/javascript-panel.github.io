@@ -20,27 +20,27 @@ Returns a `boolean` value.
 	// Click anywhere in the panel to open the menu.
 
 	function on_mouse_lbtn_up(x, y) {
-		var menu = window.CreatePopupMenu();
-		var file_popup = window.CreatePopupMenu();
-		var edit_popup = window.CreatePopupMenu();
-		var view_popup = window.CreatePopupMenu();
-		var playback_popup = window.CreatePopupMenu();
-		var library_popup = window.CreatePopupMenu();
-		var help_popup = window.CreatePopupMenu();
+		const menu = window.CreatePopupMenu();
+		const file_popup = window.CreatePopupMenu();
+		const edit_popup = window.CreatePopupMenu();
+		const view_popup = window.CreatePopupMenu();
+		const playback_popup = window.CreatePopupMenu();
+		const library_popup = window.CreatePopupMenu();
+		const help_popup = window.CreatePopupMenu();
 
-		var file = fb.CreateMainMenuManager('File');
-		var edit = fb.CreateMainMenuManager('Edit');
-		var view = fb.CreateMainMenuManager('View');
-		var playback = fb.CreateMainMenuManager('Playback');
-		var library = fb.CreateMainMenuManager('Library');
-		var help = fb.CreateMainMenuManager('Help');
+		const file_menu = fb.CreateMainMenuManager('File');
+		const edit_menu = fb.CreateMainMenuManager('Edit');
+		const view_menu = fb.CreateMainMenuManager('View');
+		const playback_menu = fb.CreateMainMenuManager('Playback');
+		const library_menu = fb.CreateMainMenuManager('Library');
+		const help_menu = fb.CreateMainMenuManager('Help');
 
-		file.BuildMenu(file_popup, 1000);
-		edit.BuildMenu(edit_popup, 2000);
-		view.BuildMenu(view_popup, 3000);
-		playback.BuildMenu(playback_popup, 4000);
-		library.BuildMenu(library_popup, 5000);
-		help.BuildMenu(help_popup, 6000);
+		file_menu.BuildMenu(file_popup, 1000);
+		edit_menu.BuildMenu(edit_popup, 2000);
+		view_menu.BuildMenu(view_popup, 3000);
+		playback_menu.BuildMenu(playback_popup, 4000);
+		library_menu.BuildMenu(library_popup, 5000);
+		help_menu.BuildMenu(help_popup, 6000);
 
 		file_popup.AppendTo(menu, MF_STRING, 'File');
 		edit_popup.AppendTo(menu, MF_STRING, 'Edit');
@@ -49,7 +49,7 @@ Returns a `boolean` value.
 		library_popup.AppendTo(menu, MF_STRING, 'Library');
 		help_popup.AppendTo(menu, MF_STRING, 'Help');
 
-		var idx = menu.TrackPopupMenu(x, y);
+		const idx = menu.TrackPopupMenu(x, y);
 
 		switch (true) {
 		case idx == 0:
