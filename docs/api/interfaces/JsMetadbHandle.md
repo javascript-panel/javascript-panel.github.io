@@ -45,6 +45,23 @@ Returns a `boolean` value.
 	}
 	```
 
+## `FormatTitle(format)`
+|Arguments|||
+|---|---|---|
+|format|[JsTitleFormat](JsTitleFormat.md)
+
+Returns a `string`.
+
+!!! example
+	```js
+	const tfo = fb.TitleFormat("%artist%");
+	const item = fb.GetFocusItem();
+
+	if (item) {
+		const artist = item.FormatTitle(tfo);
+	}
+	```
+
 ## `GetAlbumArt([art_id, want_stub])`
 |Arguments|||
 |---|---|---|

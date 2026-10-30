@@ -77,7 +77,6 @@ Returns a [JsMetadbHandleList](JsMetadbHandleList.md) instance.
 	```
 
 ## `CopyToClipboard()`
-
 Returns a `boolean` value.
 
 !!! example
@@ -137,6 +136,21 @@ an empty handle list will be returned.
 |handle|[JsMetadbHandle](JsMetadbHandle.md)|
 
 Returns position of handle or `-1` on failure.
+
+## `FormatTitles(format)`
+|Arguments|||
+|---|---|---|
+|format|[JsTitleFormat](JsTitleFormat.md)
+
+Returns an array.
+
+!!! example
+	```js
+	const tfo = fb.TitleFormat("%artist%");
+	const handle_list = fb.GetLibraryItems();
+	const artists = handle_list.FormatTitles(tfo);
+	console.log(handle_list.Count === artists.length); // True
+	```
 
 ## `GetItem(index)`
 |Arguments|||

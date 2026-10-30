@@ -186,6 +186,18 @@ Returns index of named playlist or newly created playlist.
 
 Returns the found index or `-1` on failure.
 
+## `plman.FormatTitle(format, playlistIndex, playlistItemIndex)`
+|Arguments|||
+|---|---|---|
+|format|[JsTitleFormat](../interfaces/JsTitleFormat.md)
+|playlistIndex|`number`|
+|playlistItemIndex|`number`|
+
+Returns a `string`.
+
+Use if you want access to playlist specific fields such as `%list_index%`, `%list_total%`, `%isplaying%` etc.
+Full details [here](https://wiki.hydrogenaud.io/index.php?title=Foobar2000:Title_Formatting_Reference#Playlist-only_fields).
+
 ## `plman.GetGUID(playlistIndex)`
 |Arguments|||
 |---|---|---|

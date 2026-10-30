@@ -22,6 +22,19 @@
 	When a custom volume control is active, you can not use `playback.Volume` and must use `playback.VolumeUp()` / `playback.VolumeDown()` / `playback.VolumeMute()`.
 
 **Methods**
+## `playback.FormatTitle(format)`
+|Arguments|||
+|---|---|---|
+|format|[JsTitleFormat](../interfaces/JsTitleFormat.md)
+
+Returns a `string`. It will be empty if [foobar2000](https://www.foobar2000.org) is not playing.
+
+!!! example
+	```js
+	const tfo = fb.TitleFormat("%artist%");
+	const artist = playback.FormatTitle(tfo);
+	```
+
 ## `playback.GetActiveDSPs()`
 Returns an array.
 

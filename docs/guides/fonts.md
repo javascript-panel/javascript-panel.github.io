@@ -67,7 +67,6 @@ of `Segoe UI` and `16px` will be used.
 	}
 	```
 
-
 !!! note
 	Not all fonts supported by `Default UI` can be used by this component. This
 	is because it uses older `GDI` graphics whereas this component uses `DirectWrite`. If
