@@ -40,7 +40,7 @@ $font(Twemoji Mozilla,16)$country_flag(%country%)
 	function refresh() {
 		var item = fb.GetFocusItem();
 		if (item) {
-			str = tfo.EvalWithMetadb(item);
+			str = item.FormatTitle(tfo);
 		} else {
 			str = "";
 		}
