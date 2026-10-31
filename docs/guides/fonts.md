@@ -78,7 +78,7 @@ and then stringify it again.
 
 !!! example
 	```js
-	const font_str = window.GetUIFont(0);
+	let font_str = window.GetUIFont(0);
 	const font_obj = JSON.parse(font_str);
 
 	// double the size, leave other properties untouched.
