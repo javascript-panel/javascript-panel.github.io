@@ -19,7 +19,21 @@
 !!! note "Custom Volume"
 	`playback.CustomVolume` can be used for displaying the volume from `UPnP` devices. It will return
 	a value of `-1` when using a normal device and that also indicates that `playback.Volume` is writable.
-	When a custom volume control is active, you can not use `playback.Volume` and must use `playback.VolumeUp()` / `playback.VolumeDown()` / `playback.VolumeMute()`.
+
+	When a `UPnP` device is active, you can not use `playback.Volume` and must use `playback.VolumeUp()` / `playback.VolumeDown()` / `playback.VolumeMute()`.
+
+	!!! example
+		```js
+		let volume_text = '';
+
+		if (playback.CustomVolume == -1) {
+			// normal device
+			volume_text = playback.Volume.toFixed(2) + ' dB';
+		} else {
+			// UPnP device
+			volume_text = 'Volume: ' + playback.CustomVolume;
+		}
+		```
 
 **Methods**
 ## `playback.FormatTitle(format)`
