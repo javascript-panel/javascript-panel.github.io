@@ -2,11 +2,11 @@
 
 |||||
 |---|---|---|---|
-|ChannelConfig|`number`|
-|ChannelCount|`number`|
-|Data|`array`|
-|SampleCount|`number`|
-|SampleRate|`number`|
+|ChannelConfig|`number`|read|
+|ChannelCount|`number`|read|
+|Data|`array`|read|
+|SampleCount|`number`|read|
+|SampleRate|`number`|read|
 
 !!! note
 	You must check the return value from `fb.GetAudioChunk` is valid before using.
@@ -16,13 +16,6 @@
 	var chunk = fb.GetAudioChunk(requested_length, offset);
 
 	if (chunk) {
-		// chunk now has the following properties
-		// chunk.ChannelConfig
-		// chunk.ChannelCount
-		// chunk.SampleRate
-		// chunk.SampleCount
-		// chunk.Data
-
 		var data = chunk.Data
 
 		var channel_count = chunk.ChannelCount;
