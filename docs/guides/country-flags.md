@@ -1,8 +1,8 @@
 # Country Flags
 
 !!! note
-	This requires that you have a supported font like [Twemoji Mozilla](https://github.com/mozilla/twemoji-colr/releases/latest)
-	or [Noto Color Emoji](https://fonts.google.com/noto/specimen/Noto+Color+Emoji) installed.
+	This requires that you have a supported font like
+	[Noto Color Emoji](https://fonts.google.com/noto/specimen/Noto+Color+Emoji) installed.
 
 While it has always been possible to display flags with images or writing your own scripts
 to make use of emoji, this details some helper methods which have been added to make it
@@ -16,7 +16,7 @@ easier.
 
 A `$country_flag` function has been added and you can use it like this:
 
-`$font(Twemoji Mozilla,16)$country_flag(%country%)`
+`$font(Noto Color Emoji,16)$country_flag(%country%)`
 
 !!! note
 	The use of `$font` is detailed [here](font-rgb.md).
