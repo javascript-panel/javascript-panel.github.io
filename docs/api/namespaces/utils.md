@@ -87,7 +87,7 @@ Returns a [JsImage](../interfaces/JsImage.md) instance.
 |Arguments|||
 |---|---|---|
 |text|`string`|
-|font|`object`|See [fonts](../../guides/fonts.md).|
+|font|`object`, `string`|See [fonts](../../guides/fonts.md).|
 |text_alignment|[DWRITE_TEXT_ALIGNMENT](../flags.md#dwrite_text_alignment)|Default `0`.|
 |paragraph_alignment|[DWRITE_PARAGRAPH_ALIGNMENT](../flags.md#dwrite_paragraph_alignment)|Default `0`.|
 |word_wrapping|[DWRITE_WORD_WRAPPING](../flags.md#dwrite_word_wrapping)|Default `0`.|
