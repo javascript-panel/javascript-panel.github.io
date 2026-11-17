@@ -240,7 +240,7 @@ No return value.
 |Arguments|||
 |---|---|---|
 |text|`string`|
-|font|`string`|See [fonts](../../guides/fonts.md).|
+|font|`object`|See [fonts](../../guides/fonts.md).|
 |colour|`number`|
 |x|`number`|
 |y|`number`|
@@ -278,7 +278,7 @@ for an example.
 |Arguments|||
 |---|---|---|
 |text|`string`|`$rgb` and `$font` code will be ignored.
-|font|`string`|See [fonts](../../guides/fonts.md).
+|font|`object`|See [fonts](../../guides/fonts.md).
 |colour|`number`|
 |x|`number`|
 |y|`number`|

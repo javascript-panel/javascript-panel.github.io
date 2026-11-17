@@ -87,7 +87,7 @@ Returns a [JsImage](../interfaces/JsImage.md) instance.
 |Arguments|||
 |---|---|---|
 |text|`string`|
-|font_str|`string`|See [fonts](../../guides/fonts.md).|
+|font|`object`|See [fonts](../../guides/fonts.md).|
 |text_alignment|[DWRITE_TEXT_ALIGNMENT](../flags.md#dwrite_text_alignment)|Default `0`.|
 |paragraph_alignment|[DWRITE_PARAGRAPH_ALIGNMENT](../flags.md#dwrite_paragraph_alignment)|Default `0`.|
 |word_wrapping|[DWRITE_WORD_WRAPPING](../flags.md#dwrite_word_wrapping)|Default `0`.|
@@ -105,7 +105,7 @@ This method also supports [advanced styling](../../guides/styling-ranges-text.md
 	```js
 	include('helpers');
 
-	const font = CreateFontString('Segoe UI', 20);
+	const font = CreateFont('Segoe UI', 20);
 	const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 	const layout = utils.CreateTextLayout(text, font);
 	let offset = 0;

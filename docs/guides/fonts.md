@@ -4,13 +4,12 @@ This page is for working with fonts that are passed to
 [JsGraphics WriteTextSimple](../api/interfaces/JsGraphics.md#writetextsimpletext-font-colour-x-y-w-h-text_alignment-paragraph_alignment-word_wrapping-trimming_granularity) and
 [utils.CreateTextLayout](../api/namespaces/utils.md#utilscreatetextlayouttext-font_str-text_alignment-paragraph_alignment-word_wrapping-trimming_granularity).
 
-Unlike other scripting components, fonts need to be supplied as strings. They can be created manually by
-using `JSON.stringify` on an object or returned from `window.GetUIFont`.
+In this component, fonts are standard `JavaScript` objects.
 
 These are all of the supported properties but none are mandatory.
 
 ```js
-const font = JSON.stringify({
+const font = {
 	Name : name, // string
 	Size : size, // number
 	Weight : weight, // number
@@ -18,7 +17,7 @@ const font = JSON.stringify({
 	Stretch : stretch, // number
 	Underline : underline, // boolean
 	Strikethrough : strikethrough, // boolean
-});
+};
 ```
 
 !!! note
@@ -26,21 +25,26 @@ const font = JSON.stringify({
 
 See [Flags](../api/flags.md) for supported `Weight`, `Style` and `Stretch` values.
 
-You can even supply an empty string and defaults
-of `Segoe UI` and `16px` will be used.
+You can even supply an undefined font argument
+and `Segoe UI` and `16px` will be used.
 
 !!! example
 	```js
-	const font_str = "";
+	include('helpers');
+
+	let undefined_font;
 	const colour = RGB(0, 0, 0);
-	gr.WriteText("some text", font_str, colour, 0, 0, window.Width, window.Height);
+
+	function on_paint(gr) {
+		gr.WriteText("some text", undefined_font, colour, 0, 0, window.Width, window.Height);
+	}
 	```
 
 ## Using `window.GetUIFont`.
 !!! example
 	```js
-	const font_str = window.GetUIFont(0);
-	console.log(font_str);
+	const font = window.GetUIFont(0);
+	console.log(JSON.stringify(font, null, 4));
 	```
 
 	``` markdown title="Example output"
@@ -53,15 +57,17 @@ of `Segoe UI` and `16px` will be used.
 	}
 	```
 
-`font_str` can be passed directly without modification.
+The returned `font` can be passed directly without modification.
 
 !!! example
 	```js
-	const font_str = window.GetUIFont(0);
+	include('helpers');
+
+	const font = window.GetUIFont(0);
 	const colour = RGB(0, 0, 0);
 
 	function on_paint(gr) {
-		gr.WriteText("some text", font_str, colour, 0, 0, window.Width, window.Height);
+		gr.WriteText("some text", font, colour, 0, 0, window.Width, window.Height);
 	}
 	```
 
@@ -71,39 +77,35 @@ of `Segoe UI` and `16px` will be used.
 	an unsupported font is detected, the method will fallback to returning `Segoe UI`. The most
 	likely cause of this happening would be using `Raster` fonts like `System` or `Small Fonts`.
 
-If you want to manipulate any of the properties, you can use `JSON.parse` on the string, make the changes
-and then stringify it again.
+All properties of the font are writable to you can make any changes you like.
 
 !!! example
 	```js
-	let font_str = window.GetUIFont(0);
-	const font_obj = JSON.parse(font_str);
+	let font = window.GetUIFont(0);
 
 	// double the size, leave other properties untouched.
-	font_obj.Size = font_obj.Size * 2;
-
-	font_str = JSON.stringify(font_obj);
+	font.Size = font.Size * 2;
 	```
 
 ## Creating your own from scratch
-Writing your own `JSON.stringify` statement for every font you create would be a bit cumbersome
+Writing your own object for every font you create would be a bit cumbersome
 so `helpers.js` contains a simplified method to use anywhere.
 
 ```js
-function CreateFontString(name, size, bold) {
-	return JSON.stringify({
+function CreateFont(name, size, bold) {
+	return {
 		Name : name,
 		Size : Math.round(size * DPI / 72), // DPI comes from window.DPI
 		Weight : bold ? DWRITE_FONT_WEIGHT_BOLD : DWRITE_FONT_WEIGHT_NORMAL
-	});
+	};
 }
 ```
 
 Now it's easier to write...
 
 ```js
-const font = CreateFontString("Verdana", 16);
-const large_bold_font = CreateFontString("Verdana", 24, true);
+const font = CreateFont("Verdana", 16);
+const large_bold_font = CreateFont("Verdana", 24, true);
 ```
 
 You can of course write your own if you need more customisation.

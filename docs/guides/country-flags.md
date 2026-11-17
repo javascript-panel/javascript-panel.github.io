@@ -66,7 +66,7 @@ which accepts a 2 letter country code or the full country name. See
 	```js
 	include('helpers');
 
-	const font = CreateFontString("Noto Color Emoji", 24);
+	const font = CreateFont("Noto Color Emoji", 24);
 	const flag = utils.GetCountryFlag("GB");
 
 	function on_paint(gr) {
