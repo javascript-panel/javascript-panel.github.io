@@ -77,14 +77,14 @@ The returned `font` can be passed directly without modification.
 	an unsupported font is detected, the method will fallback to returning `Segoe UI`. The most
 	likely cause of this happening would be using `Raster` fonts like `System` or `Small Fonts`.
 
-All properties of the font are writable to you can make any changes you like.
+All properties of the font are writable so you can make any changes you like.
 
 !!! example
 	```js
 	let font = window.GetUIFont(0);
 
 	// double the size, leave other properties untouched.
-	font.Size = font.Size * 2;
+	font.Size *= 2;
 	```
 
 ## Creating your own from scratch
