@@ -99,6 +99,8 @@ You typically use this when you want to calculate the height of a string
 that wraps over multiple lines or need scrolling. When passing to [JsGraphics WriteTextLayout](../interfaces/JsGraphics.md#writetextlayouttext_layout-colour-x-y-w-h-vertical_offset),
 you can supply a vertical offset.
 
+This method also supports [advanced styling](../../guides/styling-ranges-text.md).
+
 !!! example
 	```js
 	include('helpers');

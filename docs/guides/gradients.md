@@ -1,5 +1,4 @@
 # Gradients
-
 !!! note
 	`gr` on this page refers to [JsGraphics](../api/interfaces/JsGraphics.md)
 

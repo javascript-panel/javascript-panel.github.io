@@ -1,5 +1,4 @@
 # Fonts
-
 This page is for working with fonts that are passed to
 [JsGraphics WriteText](../api/interfaces/JsGraphics.md#writetexttext-font-colour-x-y-w-h-text_alignment-paragraph_alignment-word_wrapping-trimming_granularity),
 [JsGraphics WriteTextSimple](../api/interfaces/JsGraphics.md#writetextsimpletext-font-colour-x-y-w-h-text_alignment-paragraph_alignment-word_wrapping-trimming_granularity) and
@@ -38,7 +37,6 @@ of `Segoe UI` and `16px` will be used.
 	```
 
 ## Using `window.GetUIFont`.
-
 !!! example
 	```js
 	const font_str = window.GetUIFont(0);
@@ -88,7 +86,6 @@ and then stringify it again.
 	```
 
 ## Creating your own from scratch
-
 Writing your own `JSON.stringify` statement for every font you create would be a bit cumbersome
 so `helpers.js` contains a simplified method to use anywhere.
 
@@ -112,6 +109,6 @@ const large_bold_font = CreateFontString("Verdana", 24, true);
 You can of course write your own if you need more customisation.
 
 ## Advanced usage
-
-You can also create an array of fonts and apply them to a single string. You can style each word or even character
+When using [utils.CreateTextLayout](../api/namespaces/utils.md#utilscreatetextlayouttext-font_str-text_alignment-paragraph_alignment-word_wrapping-trimming_granularity),
+you can also supply an array of fonts and apply them to a single string. You can style each word or even character
 independently. See [Styling Ranges Of Text](styling-ranges-text.md).

@@ -241,7 +241,7 @@ No return value.
 |---|---|---|
 |text|`string`|
 |font|`string`|See [fonts](../../guides/fonts.md).|
-|colour|`number`, `string`|See note below.|
+|colour|`number`|
 |x|`number`|
 |y|`number`|
 |w|`number`|
@@ -252,16 +252,6 @@ No return value.
 |trimming_granularity|[DWRITE_TRIMMING_GRANULARITY](../flags.md#dwrite_trimming_granularity)|Default `0`.|
 
 No return value.
-
-!!! note
-	The `font` must be in string form and this can come directly from using [window.GetUIFont](../namespaces/window.md#windowgetuifonttype).
-	See the dedicated [Fonts](../../guides/fonts.md) page for how to create/manipulate your own. Using an array of fonts for styling substrings of the text is also supported. See [Styling Ranges Of Text](../../guides/styling-ranges-text.md).
-
-!!! note
-	If you want to apply a single colour to all of the text, simply supply a `number`.
-
-	If supplying a `string`, it must be a stringified array. See [Styling Ranges Of Text](../../guides/styling-ranges-text.md). `$rgb`
-	code in the `text` always takes precedence so if an array is supplied at the same time, it will be ignored.
 
 ## `WriteTextLayout(text_layout, colour, x, y, w, h, vertical_offset)`
 |Arguments|||

@@ -1,7 +1,6 @@
 # $font & $rgb
 
 ### $rgb
-
 You can use these colour methods which are documented [here](https://wiki.hydrogenaud.io/index.php?title=Foobar2000:Title_Formatting_Reference#Historical_and_Columns_UI_color_functions).
 
 ```
@@ -14,7 +13,6 @@ $transition(string,colour1,colour2)
 ```
 
 ### $font
-
 This is not a common function and is exclusive to `JavaScript Panel`. It takes up to 6 values.
 
 `$font(name,size,weight,style,underline,strikethrough)`

@@ -1,83 +1,11 @@
 # Styling Ranges Of Text
-
 !!! note
-	If any text you pass to `JsGraphics WriteText` or `utils.CreateTextLayout` contain `$rgb`/`$font` code,
+	This applies to `utils.CreateTextLayout` only.
+
+	If any text you pass to `utils.CreateTextLayout` contain `$rgb`/`$font` code,
 	any colour/font arrays described on this page will be ignored. Title formatting always take precedence.
 
-## Using `JsGraphics WriteText`
-
-This first example uses [JsGraphics WriteText](../api/interfaces/JsGraphics.md#writetexttext-font-colour-x-y-w-h-text_alignment-paragraph_alignment-word_wrapping-trimming_granularity)
-where you can apply custom fonts/colours to a single string.
-
-The limitation here is that scrolling text vertically is not supported so if you need that, you'll need to use
-the `utils.CreateTextLayout` examples below.
-
-!!! example
-	```js
-	'use strict';
-
-	include('helpers');
-
-	/*
-	This sample splits a string in to whole words and then randomly
-	styles each one. Every element of the array which is used for
-	styling must have a valid start/length value. You can see
-	how the start value is incremented for each word.
-	*/
-
-	const installed_fonts = utils.ListFonts();
-	const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-
-	let colour_string = '';
-	let font_string = '';
-
-	// split text in to whole words for styling
-	const words = text.split(' ');
-
-	refresh();
-
-	function refresh() {
-		const fonts = [], colours = [];
-		let start = 0;
-
-		words.forEach((word, i) => {
-			// length of word plus following space
-			const len = word.length + 1;
-
-			colours.push({
-				// when using an array of colours, Start and Length are mandatory
-				Start : start,
-				Length : len,
-				Colour : RGB(Math.random() * 200, Math.random() * 200, Math.random() * 200),
-			});
-
-			fonts.push({
-				// when using an array of fonts, Start and Length are mandatory
-				Start : start,
-				Length : len,
-				// the following are all optional and may be omitted. Segoe UI/16px will be used if Name/Size are not specified.
-				Name : installed_fonts[Math.floor(Math.random() * installed_fonts.length)],
-				Size : 12 + Math.floor(Math.random() * 20),
-				Weight : Math.round(Math.random() * 800) + 100, // values between 100-900
-				Underline : Math.random() < 0.1,
-				Strikethrough : Math.random() < 0.1,
-			});
-
-			// increment start position for next word
-			start += len;
-		});
-
-		colour_string = JSON.stringify(colours);
-		font_string = JSON.stringify(fonts);
-	}
-
-	function on_paint(gr) {
-		gr.WriteText(text, font_string, colour_string, 10, 10, window.Width - 20, window.Height - 20);
-	}
-	```
-
-## Using `utils.CreateTextLayout`
-This example demonstrates scrollable text, a single font and a different colour per word.
+## Per word colouring
 
 !!! example
 	```js
@@ -158,8 +86,7 @@ This example demonstrates scrollable text, a single font and a different colour 
 	}
 	```
 
-This example demonstrates scrollable text, per-word colouring and per-word fonts.
-
+## Per word colours and fonts
 !!! example
 	```js
 	'use strict';
