@@ -23,21 +23,18 @@ A `$country_flag` function has been added and you can use it like this:
 
 !!! example
 	```js
+	'use strict';
 	include('helpers');
 
-	// $font() with no args resets back to the default_font supplied to
-	// DrawStyledText in on_paint
-	// also includes $rgb example
-	const tfo = fb.TitleFormat(
-		"[$font(Noto Color Emoji,16)$country_flag(%country%)$font() ]$rgb(255,0,0)%artist%"
-	);
-	
-	let str = "";
+	const tfo = fb.TitleFormat("[$font(Noto Color Emoji,16)$country_flag(%country%)$font() ]%artist%");
+	const default_font = CreateFont('Segoe UI', 20);
+	const default_colour = RGB(0, 0, 0);
+	let str = '';
 
 	refresh();
 
 	function refresh() {
-		str = fb.GetFocusItem()?.FormatTitle(tfo) || "";
+		str = fb.GetFocusItem()?.FormatTitle(tfo) || '';
 	}
 
 	function on_item_focus_change() {
@@ -51,8 +48,7 @@ A `$country_flag` function has been added and you can use it like this:
 	}
 
 	function on_paint(gr) {
-		// default_font is an empty string, defaulting to Segoe UI, 16px
-		gr.WriteText(str, "", 0, 0, 0, window.Width, window.Height, 2, 2);
+		gr.WriteText(str, default_font, default_colour, 0, 0, window.Width, window.Height, 2, 2);
 	}
 	```
 
@@ -64,13 +60,14 @@ which accepts a 2 letter country code or the full country name. See
 
 !!! example
 	```js
+	'use strict';
 	include('helpers');
 
-	const font = CreateFont("Noto Color Emoji", 24);
-	const flag = utils.GetCountryFlag("GB");
+	const font = CreateFont('Noto Color Emoji', 24);
+	const flag = utils.GetCountryFlag('GB');
 
 	function on_paint(gr) {
-		gr.WriteText(flag, font, 0, 0, 0, window.Width, window.Height, 2, 2);
+		gr.WriteTextSimple(flag, font, 0, 0, 0, window.Width, window.Height, 2, 2);
 	}
 	```
 
