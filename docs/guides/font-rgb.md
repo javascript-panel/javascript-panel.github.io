@@ -1,7 +1,7 @@
 # $font & $rgb
 
 !!! note
-	`gr.WriteTextSimple` does not support text containing `$rgb` / `$font` code. It will still strip the code so text is displayed properly.
+	`JsGraphics WriteTextSimple` does not support styling text containing `$rgb` / `$font` code. It will still strip the code so text is displayed properly.
 
 ### $rgb
 You can use these colour methods which are documented [here](https://wiki.hydrogenaud.io/index.php?title=Foobar2000:Title_Formatting_Reference#Historical_and_Columns_UI_color_functions).
